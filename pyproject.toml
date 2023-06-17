@@ -1,7 +1,7 @@
 
 [project]
 name = "rss2pdf"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 dependencies = [
     "feedparser",
@@ -25,7 +25,7 @@ name = "Jochem Hölscher"
 email = "a.fake@e.mail"
 
 [git]
-github = "https://github.com/JJJHolscher/rss2pdf"
+github = "JJJHolscher"
 
 [build-system]
 requires = [

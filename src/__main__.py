@@ -41,6 +41,7 @@ def update(url: str, dir: Path, archive_dir: Path, temp_pdfs: Path, new: bool = 
     else:
         print("creating", pdf_path)
         archive_dir.mkdir(parents=True, exist_ok=True)
+        pdf_path.parent.mkdir(parents=True, exist_ok=True)
         archive = set()
 
     # Create the tempororary pdf directory if it doesn't already exist.
