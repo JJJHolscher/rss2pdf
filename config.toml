@@ -1,0 +1,16 @@
+# Make a new pdf it does not exist in out.dir.
+new = false
+
+[dev]
+debug = false
+
+[out]
+dir = "~/l/b/feed"
+archive = "~/l/b/archive/rss2pdf"
+temp_pdfs = "./temp_pdfs"
+
+[rss]
+urls = [
+"https://carado.moe/rss.xml"
+]
+
