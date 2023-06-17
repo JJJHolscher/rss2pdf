@@ -1,12 +1,26 @@
 # README
 
-## files
+Download all links from an rss feed into a pdf.
 
-______________________________________________________________________
-|.gitignore		|a list of unshared files|
-|makefile|dev tools for installing, publisizing etc.|
-|pyproject.toml	|project metadata|
-|requirements.txt |python dependencies|
-|setup.py|necessary for `pip install -e .`|
-|src/main.py|first file that gets called|
---------------------------------------------
+From the CLI:
+
+```sh
+python -m rss2pdf --rss.urls '["https://scottaaronson.blog/?feed=rss2"]'
+```
+
+Or by editing the config.toml shipped with this package.
+You can find its location with.
+
+```sh
+python -m rss2pdf --help
+```
+
+rss2pdf will keep track of entries already downloaded and only download unseen entries.
+
+## install
+
+rss2pdf uses the `pdfkit` package, which requires [wkhtmltopdf](https://wkhtmltopdf.org/) which should be available for all platforms.
+
+```sh
+pip install rss2pdf
+```

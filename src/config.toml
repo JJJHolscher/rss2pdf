@@ -1,0 +1,15 @@
+# Make a new pdf it does not exist in out.dir.
+new = false
+
+[dev]
+debug = false
+
+[out]
+dir = "./feed"
+archive = "./archive"
+temp_pdfs = "./temp_pdfs"
+
+[rss]
+urls = [
+]
+
