@@ -66,14 +66,14 @@ test: $(venv) test_local increment_patch build
 	cd tmp && \
 	python -m venv .venv
 	. tmp/.venv/bin/activate && \
-	pip install -i "https://test.pypi.org/simple" "$(name) == $(version)" || \
-	pip install -i "https://test.pypi.org/simple" "$(name) == $(version)" && \
+	pip install --extra-index-url "https://test.pypi.org/simple" "$(name) == $(version)" || \
+	pip install --extra-index-url "https://test.pypi.org/simple" "$(name) == $(version)" && \
 	python -m unittest "$(name).tests"
 
 publish: $(venv)
 	$(call clear_dir,"dist")
 	python -m build
-	twine upload dist/* -r pypitest
+	twine upload dist/*
 
 .git/refs/remotes/public:
 	git checkout -b main

@@ -1,8 +1,14 @@
 
 [project]
-name = "NAME"
-version = "0.0.0" # TODO; automatically update versions by looking at git
+name = "rss2pdf"
+version = "0.1.0"
 description = ""
+dependencies = [
+    "feedparser",
+    "pypdf",
+    "pdfkit",
+    "argtoml"
+]
 dynamic = ["readme"]
 requires-python = ">=3.11"
 classifiers = [
@@ -11,15 +17,15 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-[git]
-github = "https://github.com/JJJHolscher/NAME"
-
 [project.urls]
-homepage = "https://github.com/JJJHolscher/NAME"
+homepage = "https://github.com/JJJHolscher/rss2pdf"
 
 [[project.authors]]
 name = "Jochem Hölscher"
-email = "jonoDASHdevDOTSIXpsuoATsimpleloginDOTcom"
+email = "a.fake@e.mail"
+
+[git]
+github = "https://github.com/JJJHolscher/rss2pdf"
 
 [build-system]
 requires = [
@@ -28,7 +34,10 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["NAME"]
+include = ["rss2pdf"]
+
+[tool.setuptools.package-data]
+"*" = ["**.toml"]
 
 [tool.setuptools.dynamic]
 readme = {file = ["README.md"], content-type = "text/markdown"}

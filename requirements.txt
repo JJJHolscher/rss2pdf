@@ -8,3 +8,7 @@ pandas
 pyright
 result
 twine
+feedparser
+argtoml
+pdfkit
+pypdf

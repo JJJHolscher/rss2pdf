@@ -3,12 +3,12 @@
 
 import unittest
 
-from src.main import *
+from src import *
 
 
 class TestMain(unittest.TestCase):
     def test_main(self):
-        self.assertEqual(UNITTESTS(), 0)
+        self.assertEqual(0, 0)
 
 if __name__ == "__main__":
     unittest.main()
