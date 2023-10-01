@@ -1,1 +1,2 @@
-from .__main__ import update, download
+from . import dl
+from .dl import download, update
