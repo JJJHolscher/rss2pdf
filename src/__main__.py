@@ -18,7 +18,7 @@ from pypdf import PdfMerger
 
 def string_for_os(string):
     def safe_char(c):
-        return c.isalnim() or c in {".", "-", "_", " "}
+        return c.isalnum() or c in {".", "-", "_", " "}
 
     return "".join(c for c in string if safe_char(c))
 
