@@ -39,6 +39,16 @@ def get_chapter_title(rss_entry):
     return string_for_os(title)
 
 
+def server_link(entry):
+    if "link" not in entry:
+        return
+    link = entry.link
+    i = link.find("#")
+    if i > 0:
+        return link[:i]
+    return link
+
+
 def update(url: str, folder: Path, archive_dir: Path, new: bool = False):
     rss = feedparser.parse(url)
     feed_title = get_feed_title(rss)
@@ -65,15 +75,17 @@ def update(url: str, folder: Path, archive_dir: Path, new: bool = False):
     updated = False
     with open(archive_path, "a") as archive_file:
         for i, entry in enumerate(entries):
-            if "link" not in entry or entry.link in archive:
+            link = server_link(entry)
+            if not link or link in archive:
                 continue
-            link = entry.link
             updated = True
 
             chapter_title = get_chapter_title(entry)
             pdf_path = folder / f"{chapter_title}.pdf"
             print(f"[{i+1}/{len(entries)}] {chapter_title}")
             pdfkit.from_url(link, pdf_path)
+
+            archive.add(link)
             archive_file.write(link + "\n")
 
     return updated
