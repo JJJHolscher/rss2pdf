@@ -29,7 +29,7 @@ $(activate):
 	pip install --upgrade pip;
 
 $(binlink):
-	echo "#!/bin/sh\n$(venv)/bin/python $(pwd)/src/main.py \"\$$@\"" > $(binlink)
+	echo "#!/bin/sh\n$(venv)/bin/python $(pwd)/src/__main__.py \"\$$@\"" > $(binlink)
 	chmod +x $(binlink)
 
 $(srclink):

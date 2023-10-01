@@ -6,11 +6,13 @@
 """
 
 from pathlib import Path
+from typing import List
 from urllib.parse import urlparse
 
+import debugpy
 import feedparser
 import pdfkit
-from argtoml import ArgumentParser, parse_args
+from argtoml import parse_args
 from pypdf import PdfMerger
 
 
@@ -73,13 +75,20 @@ def update(url: str, dir: Path, archive_dir: Path, temp_pdfs: Path, new: bool = 
             pdf.unlink()
 
 
-if __name__ == "__main__":
-    ARGS = parse_args(description="Generate an epub from a RSS feed.", path=True)
-    if ARGS.dev.debug:
-        import debugpy
+def download(urls: List[str], out_dir: Path, archive: Path, temp_dir: Path, new: bool):
+    if len(urls) == 0:
+        print("no rss urls to check")
 
+    for url in urls:
+        update(url, out_dir, archive, temp_dir, new)
+
+
+if __name__ == "__main__":
+    ARGS = parse_args(description="Generate an epub from a RSS feed.")
+    if ARGS.dev.debug:
         debugpy.listen(5678)
         debugpy.wait_for_client()
 
-    for url in ARGS.rss.urls:
-        update(url, ARGS.out.dir, ARGS.out.archive, ARGS.out.temp_pdfs, ARGS.new)
+    download(
+        ARGS.rss.urls, ARGS.out.dir, ARGS.out.archive, ARGS.out.temp_pdfs, ARGS.new
+    )
