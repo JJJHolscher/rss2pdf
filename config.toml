@@ -1,5 +1,6 @@
 # Make a new pdf it does not exist in out.dir.
 new = false
+merge = false
 
 [dev]
 debug = false
@@ -11,6 +12,7 @@ temp_pdfs = "./temp_pdfs"
 
 [rss]
 urls = [
-"https://carado.moe/rss.xml"
+# "https://carado.moe/rss.xml"
+"https://scottaaronson.blog/?feed=rss2",
 ]
 
